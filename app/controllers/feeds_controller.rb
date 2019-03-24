@@ -24,7 +24,7 @@ class FeedsController < ApplicationController
   def create
     @feed = Feed.new(feed_params)
     if @feed.save
-      # ここに処理を書いていきます。
+    redirect_to user_path(@user.id) 
     else
       render 'new'
     end

@@ -9,6 +9,17 @@
     <%= form.hidden_field :image_cache %>
   </div>
 
+   <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :feed_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_area :content, id: :feed_content %>
+  </div>
+
+
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -23,6 +23,8 @@ class FeedsController < ApplicationController
  
   def create
     @feed = Feed.new(feed_params)
+    @feed.user_id = @current_user_id
+    binding.pry
     if @feed.save
     Feed.create(params.require(:feed).permit(:title, :content))
     redirect_to user_path(@user.id) 

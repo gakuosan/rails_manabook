@@ -5,7 +5,16 @@
   <%= image_tag @feed.image.url %>
 </p>
 
+<p>
+  <strong>タイトル:</strong>
+  <%= @feed.title %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @feed.content %>
+</p>
+
+
 <%= link_to 'Edit', edit_feed_path(@feed) %> |
 <%= link_to 'Back', feeds_path %>
-
-

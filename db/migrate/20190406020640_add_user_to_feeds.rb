@@ -1,5 +1,5 @@
 class AddUserToFeeds < ActiveRecord::Migration[5.1]
   def change
-    add_column :feeds, :user_id, :integer
+    add_reference :feeds, :user, foreign_key: true
   end
 end

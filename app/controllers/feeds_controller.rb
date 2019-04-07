@@ -11,13 +11,18 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
-  end
+     @feed = Feed.find_by(id: params[:id])
+    # 変数@userを定義してください
+     @user = User.find_by(id: @feed.user_id)
+  end  
+  
 
   # GET /feeds/new
-  def new
-    @feed = Feed.new
-    # binding.pry
-  end
+ def new
+  @feed= current_user.feeds.build
+ end
+    
+    
 
   # GET /feeds/1/edit
   def edit
@@ -79,6 +84,6 @@ class FeedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feed_params
-      params.require(:feed).permit(:image, :image_cache, :title, :content)
+      params.require(:feed).permit(:image, :image_cache, :title, :content, )
     end
 end

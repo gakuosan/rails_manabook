@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   
   root 'feeds#index'
   
-  resources :feeds
   resources :feeds do
     collection do
       post :confirm

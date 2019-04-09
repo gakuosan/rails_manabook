@@ -12,15 +12,19 @@ class FeedsController < ApplicationController
   # GET /feeds/1.json
   def show
      @feed = Feed.find_by(id: params[:id])
-    # 変数@userを定義してください
      @user = User.find_by(id: @feed.user_id)
+    
   end  
   
 
   # GET /feeds/new
- def new
-  @feed= current_user.feeds.build
- end
+   def new
+    if params[:back]
+      @feed= Feed.new(blog_params)
+    else
+      @feed = Feed.new
+    end
+   end
     
     
 
@@ -47,11 +51,11 @@ class FeedsController < ApplicationController
   end
   
    def confirm
-    @feed= Feed.new(blog_params)
+    @feed= Feed.new(feed_params)
     @feed.user_id = current_user.id #現在ログインしているuserのidを、feedのuser_idカラムに挿入する
     render :new if @feed.invalid?
    end
-
+   
   # PATCH/PUT /feeds/1
   # PATCH/PUT /feeds/1.json
   def update

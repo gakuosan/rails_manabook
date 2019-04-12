@@ -53,6 +53,7 @@ class FeedsController < ApplicationController
    def confirm
     @feed= Feed.new(feed_params)
     @feed.user_id = current_user.id #現在ログインしているuserのidを、feedのuser_idカラムに挿入する
+    #binding.pry
     render :new if @feed.invalid?
    end
    

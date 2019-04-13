@@ -52,6 +52,7 @@ class FeedsController < ApplicationController
   
    def confirm
     @feed= Feed.new(feed_params)
+    binding.pry
     @feed.user_id = current_user.id #現在ログインしているuserのidを、feedのuser_idカラムに挿入する
     #binding.pry
     render :new if @feed.invalid?
@@ -92,5 +93,12 @@ class FeedsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def feed_params
       params.require(:feed).permit(:image, :image_cache, :title, :content, )
+    end
+    
+    def logged_in?
+    if current_user.nil?
+      redirect_to new_session_path
+      
+    end
     end
 end

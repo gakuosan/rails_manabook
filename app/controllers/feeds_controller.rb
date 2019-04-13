@@ -16,7 +16,6 @@ class FeedsController < ApplicationController
     
   end  
   
-
   # GET /feeds/new
    def new
     if params[:back]
@@ -50,14 +49,14 @@ class FeedsController < ApplicationController
     end
   end
   
-   def confirm
+  def confirm
     @feed = Feed.new(feed_params)
     #binding.pry
     @feed.user_id = current_user.id #現在ログインしているuserのidを、feedのuser_idカラムに挿入する
     #binding.pry
     render :new if @feed.invalid?
     
-   end
+  end
    
   # PATCH/PUT /feeds/1 
   # PATCH/PUT /feeds/1.json
@@ -84,7 +83,8 @@ class FeedsController < ApplicationController
     end
   end
 
-  private
+    private
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_feed
       #binding.pry
@@ -97,9 +97,9 @@ class FeedsController < ApplicationController
     end
     
     def logged_in?
-    if current_user.nil?
-      redirect_to new_session_path
+     if current_user.nil?
+    redirect_to new_session_path
       
-    end
+     end
     end
 end

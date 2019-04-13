@@ -20,8 +20,6 @@ before_action :logged_in_user, only: [:edit, :update]
   @user = User.find_by(id: params[:id])
   end
   
-
-  
   private
   
   def user_params

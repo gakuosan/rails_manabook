@@ -6,6 +6,5 @@ class Feed < ApplicationRecord
    validates :image, presence: true
    validates :content, presence: true, length: { maximum: 50 }
    
-  
    belongs_to :user    
 end

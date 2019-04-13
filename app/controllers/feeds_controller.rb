@@ -7,7 +7,6 @@ class FeedsController < ApplicationController
   def index
     @feeds = Feed.all
   end
-
   # GET /feeds/1
   # GET /feeds/1.json
   def show
@@ -25,8 +24,6 @@ class FeedsController < ApplicationController
     end
    end
     
-    
-
   # GET /feeds/1/edit
   def edit
   end
@@ -57,7 +54,6 @@ class FeedsController < ApplicationController
     render :new if @feed.invalid?
     
   end
-   
   # PATCH/PUT /feeds/1 
   # PATCH/PUT /feeds/1.json
    def update
@@ -97,9 +93,9 @@ class FeedsController < ApplicationController
     end
     
     def logged_in?
-     if current_user.nil?
-    redirect_to new_session_path
+      if current_user.nil?
+      redirect_to new_session_path
       
-     end
+      end
     end
 end

@@ -10,17 +10,17 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
-     @feed = Feed.find_by(id: params[:id])
-     @user = User.find_by(id: @feed.user_id)
+    @feed = Feed.find_by(id: params[:id])
+    @user = User.find_by(id: @feed.user_id)
     
   end  
   
   # GET /feeds/new
    def new
     if params[:back]
-      @feed= Feed.new(feed_params)
+     @feed= Feed.new(feed_params)
     else
-      @feed = Feed.new
+     @feed = Feed.new
     end
    end
     

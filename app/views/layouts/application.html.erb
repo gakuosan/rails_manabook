@@ -25,7 +25,6 @@
 
     <% if logged_in? %>
       <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "NewFeed", user_path(current_user.id) %>
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
       
     <% else %>

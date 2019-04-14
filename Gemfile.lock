@@ -204,7 +204,6 @@ DEPENDENCIES
   rails (~> 5.1.1)
   sass-rails (~> 5.0)
   selenium-webdriver
-  spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   tzinfo-data

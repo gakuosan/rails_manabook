@@ -10,9 +10,11 @@
 　
 　<div id="gnavi" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-  
+            <% if logged_in? %>
             <li><a href="/feeds/new">新規投稿</a></li>
             <li><a href="/feeds">一覧</a></li>
+            <% end %>
+            
           </ul>
         </div>
   </div>

@@ -10,7 +10,7 @@
 　
 　<div id="gnavi" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/">HOMEPAGE</a></li>
+  
             <li><a href="/feeds/new">新規投稿</a></li>
             <li><a href="/feeds">一覧</a></li>
           </ul>
@@ -24,7 +24,6 @@
     <% if logged_in? %>
       <%= link_to "Profile", user_path(current_user.id) %>
       <%= link_to "NewFeed", user_path(current_user.id) %>
-      
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
       
     <% else %>

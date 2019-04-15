@@ -1,6 +1,7 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
   before_action:logged_in?, only:[:new,:create]
+  before_action :require_login, only: [:edit, :destroy]
 
   # GET /feeds
   # GET /feeds.json
@@ -96,6 +97,13 @@ class FeedsController < ApplicationController
       if current_user.nil?
       redirect_to new_session_path
       
+      end
+    end
+    
+    def require_login
+      unless logged_in?
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to new_feed_path
       end
     end
 end

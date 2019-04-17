@@ -1,7 +1,7 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
-  before_action:logged_in?, only:[:new,:create]
-  before_action :require_login, only: [:edit, :destroy]
+  before_action :logged_in?, only:[:new,:create]
+  before_action :correct_user, only: [:edit, :destroy]
 
   # GET /feeds
   # GET /feeds.json
@@ -13,22 +13,18 @@ class FeedsController < ApplicationController
   def show
     @feed = Feed.find_by(id: params[:id])
     @user = User.find_by(id: @feed.user_id)
-    
   end  
-  
   # GET /feeds/new
    def new
-    if params[:back]
+     if params[:back]
      @feed= Feed.new(feed_params)
-    else
+   else
      @feed = Feed.new
-    end
+     end
    end
-    
   # GET /feeds/1/edit
   def edit
   end
-
   # POST /feeds
   # POST /feeds.json
   def create
@@ -87,23 +83,16 @@ class FeedsController < ApplicationController
       #binding.pry
       @feed=Feed.find_by_id(params[:id])
     end
-
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def feed_params
       params.require(:feed).permit(:image, :image_cache, :title, :content, )
     end
     
-    def logged_in?
-      if current_user.nil?
-      redirect_to new_session_path
-      
-      end
-    end
-    
-    def require_login
-      unless logged_in?
-      flash[:error] = "You must be logged in to access this section"
-      redirect_to new_feed_path
+    def correct_user
+      feed = Feed.find(params[:id])
+      unless current_user.id == feed.user.id
+        redirect_to feeds_path
       end
     end
 end
